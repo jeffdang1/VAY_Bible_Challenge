@@ -1,0 +1,185 @@
+{
+  "categories": [
+    {
+      "name": "Science",
+      "questions": [
+        {
+          "value": 100,
+          "clue": "The powerhouse of the cell.",
+          "answer": "What is the mitochondria?"
+        },
+        {
+          "value": 200,
+          "clue": "The chemical symbol for water.",
+          "answer": "What is H2O?"
+        },
+        {
+          "value": 300,
+          "clue": "The planet closest to the sun.",
+          "answer": "What is Mercury?"
+        },
+        {
+          "value": 400,
+          "clue": "The speed of light in a vacuum.",
+          "answer": "What is approximately 299,792,458 meters per second?"
+        },
+        {
+          "value": 500,
+          "clue": "The process by which plants make food using sunlight.",
+          "answer": "What is photosynthesis?"
+        }
+      ]
+    },
+    {
+      "name": "History",
+      "questions": [
+        {
+          "value": 100,
+          "clue": "The year World War II ended.",
+          "answer": "What is 1945?"
+        },
+        {
+          "value": 200,
+          "clue": "The first President of the United States.",
+          "answer": "Who is George Washington?"
+        },
+        {
+          "value": 300,
+          "clue": "The ancient wonder located in Giza, Egypt.",
+          "answer": "What are the Great Pyramids?"
+        },
+        {
+          "value": 400,
+          "clue": "The wall that divided East and West Berlin.",
+          "answer": "What is the Berlin Wall?"
+        },
+        {
+          "value": 500,
+          "clue": "The ship that sank in 1912 after hitting an iceberg.",
+          "answer": "What is the Titanic?"
+        }
+      ]
+    },
+    {
+      "name": "Geography",
+      "questions": [
+        {
+          "value": 100,
+          "clue": "The largest ocean on Earth.",
+          "answer": "What is the Pacific Ocean?"
+        },
+        {
+          "value": 200,
+          "clue": "The longest river in the world.",
+          "answer": "What is the Nile River?"
+        },
+        {
+          "value": 300,
+          "clue": "The smallest country in the world.",
+          "answer": "What is Vatican City?"
+        },
+        {
+          "value": 400,
+          "clue": "The mountain range that separates Europe and Asia.",
+          "answer": "What are the Ural Mountains?"
+        },
+        {
+          "value": 500,
+          "clue": "The country known as the Land of the Rising Sun.",
+          "answer": "What is Japan?"
+        }
+      ]
+    },
+    {
+      "name": "Literature",
+      "questions": [
+        {
+          "value": 100,
+          "clue": "The author of 'Romeo and Juliet'.",
+          "answer": "Who is William Shakespeare?"
+        },
+        {
+          "value": 200,
+          "clue": "The novel about a whale and Captain Ahab.",
+          "answer": "What is Moby Dick?"
+        },
+        {
+          "value": 300,
+          "clue": "The author who wrote '1984' and 'Animal Farm'.",
+          "answer": "Who is George Orwell?"
+        },
+        {
+          "value": 400,
+          "clue": "The epic poem about Odysseus's journey home.",
+          "answer": "What is The Odyssey?"
+        },
+        {
+          "value": 500,
+          "clue": "The author of 'To Kill a Mockingbird'.",
+          "answer": "Who is Harper Lee?"
+        }
+      ]
+    },
+    {
+      "name": "Movies",
+      "questions": [
+        {
+          "value": 100,
+          "clue": "The wizard school attended by Harry Potter.",
+          "answer": "What is Hogwarts?"
+        },
+        {
+          "value": 200,
+          "clue": "The planet where Luke Skywalker grew up.",
+          "answer": "What is Tatooine?"
+        },
+        {
+          "value": 300,
+          "clue": "The year the first 'Toy Story' movie was released.",
+          "answer": "What is 1995?"
+        },
+        {
+          "value": 400,
+          "clue": "The actor who played Tony Stark in the Marvel movies.",
+          "answer": "Who is Robert Downey Jr.?"
+        },
+        {
+          "value": 500,
+          "clue": "The movie with the quote 'May the Force be with you'.",
+          "answer": "What is Star Wars?"
+        }
+      ]
+    },
+    {
+      "name": "Sports",
+      "questions": [
+        {
+          "value": 100,
+          "clue": "The number of players on a basketball team on the court.",
+          "answer": "What is 5?"
+        },
+        {
+          "value": 200,
+          "clue": "The sport played at Wimbledon.",
+          "answer": "What is tennis?"
+        },
+        {
+          "value": 300,
+          "clue": "The country that won the 2018 FIFA World Cup.",
+          "answer": "What is France?"
+        },
+        {
+          "value": 400,
+          "clue": "The number of bases in baseball.",
+          "answer": "What is 4?"
+        },
+        {
+          "value": 500,
+          "clue": "The Olympic event where athletes run 26.2 miles.",
+          "answer": "What is the marathon?"
+        }
+      ]
+    }
+  ]
+}
+

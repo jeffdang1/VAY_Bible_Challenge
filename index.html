@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeopardy Trivia Game</title>
+    <!-- Link to our CSS file for styling -->
+    <link rel="stylesheet" href="styles.css?v=20260509a">
+</head>
+<body>
+    <!-- Help button - always visible top left -->
+    <button id="help-btn" class="help-btn" title="Features &amp; Instructions">?</button>
+    
+    <!-- Start Screen - shown before game begins -->
+    <div id="start-screen" class="start-screen show">
+        <div class="start-screen-content">
+            <h1>JEOPARDY!</h1>
+            <h2>Game Setup</h2>
+            
+            <!-- Timer Settings Section -->
+            <div class="setup-section">
+                <h3>Timer Settings</h3>
+                <div class="timer-input-group">
+                    <label for="timer-duration">Question Timer (seconds):</label>
+                    <input type="number" id="timer-duration" min="5" max="120" value="15" step="5">
+                </div>
+                <div class="timer-input-group" style="margin-top: 12px;">
+                    <label for="final-timer-duration">Final Jeopardy Timer (seconds):</label>
+                    <input type="number" id="final-timer-duration" min="5" max="300" value="30" step="5">
+                </div>
+            </div>
+            
+            <!-- Timer music volume -->
+            <div class="setup-section">
+                <h3>Timer Music</h3>
+                <div class="timer-input-group music-volume-row">
+                    <label for="start-music-volume">Volume: <span id="start-music-volume-value" class="volume-value-label">100%</span></label>
+                    <input type="range" id="start-music-volume" class="music-volume-slider" min="0" max="100" value="100" step="1" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100">
+                </div>
+            </div>
+            
+            <!-- Daily Double Settings Section -->
+            <div class="setup-section">
+                <h3>Daily Double Settings</h3>
+                <div class="timer-input-group">
+                    <label for="daily-double-count">Number of Daily Doubles (0-10):</label>
+                    <input type="number" id="daily-double-count" min="0" max="10" value="2" step="1">
+                </div>
+                <div class="timer-input-group" style="margin-top: 15px;">
+                    <label for="hide-daily-doubles" style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                        <input type="checkbox" id="hide-daily-doubles" checked style="width: auto; margin: 0;">
+                        <span>Hide Daily Doubles Until Clicked (Default)</span>
+                    </label>
+                </div>
+            </div>
+            
+            <!-- Two Rounds Option -->
+            <div class="setup-section">
+                <h3>Game Mode</h3>
+                <div class="timer-input-group">
+                    <label for="two-rounds-mode" style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                        <input type="checkbox" id="two-rounds-mode" style="width: auto; margin: 0;">
+                        <span>Enable Two Rounds (Round 2 has double points: $100→$200, $200→$400, etc.)</span>
+                    </label>
+                    <small style="color: var(--text-primary); opacity: 0.7; font-size: 0.85em; display: block; margin-top: 8px;">When enabled, the two-rounds template loads automatically (6 categories per round). After the first Final Jeopardy, a "ROUND 2" screen appears. Round 2 doubles dollar values on the board. You can still import a custom CSV/JSON to replace the template.</small>
+                </div>
+            </div>
+            
+            <!-- Player Names Section -->
+            <div class="setup-section">
+                <h3>Player Setup</h3>
+                <div id="pregame-players-list" class="player-setup-container"></div>
+                <button type="button" id="add-pregame-player-btn" class="btn editor-toggle" style="margin-top: 10px;">Add player</button>
+                <small style="color: var(--text-primary); opacity: 0.7; font-size: 0.85em; display: block; margin-top: 10px;">2–8 players. Add extra teams before starting.</small>
+            </div>
+            
+            <!-- AI Question Generation Section (hidden for now — remove class ai-features-hidden to show) -->
+            <div class="setup-section ai-features-hidden">
+                <h3>Generate Questions with AI</h3>
+                <div class="ai-generation-controls">
+                    <div class="player-input-group">
+                        <label for="api-key-input">OpenAI API Key:</label>
+                        <input type="password" id="api-key-input" placeholder="sk-..." class="api-key-input">
+                        <small style="color: var(--text-primary); opacity: 0.7; font-size: 0.85em;">Your API key is stored locally and never sent to our servers</small>
+                        <small style="color: var(--text-primary); opacity: 0.7; font-size: 0.8em; margin-top: 5px; display: block;">
+                            <strong>Note:</strong> Free trial users may need to add a payment method at <a href="https://platform.openai.com/account/billing" target="_blank" style="color: var(--accent-color);">OpenAI Billing</a> to use the API. Some models require credits.
+                        </small>
+                    </div>
+                    <div class="player-input-group" style="margin-top: 15px;">
+                        <label for="ai-model-select">AI Model:</label>
+                        <select id="ai-model-select" style="padding: 12px; font-size: 1em; border: 2px solid var(--border-color); border-radius: 5px; background-color: var(--bg-tertiary); color: var(--text-primary); max-width: 300px;">
+                            <option value="gpt-3.5-turbo">GPT-3.5 Turbo (Recommended for free tier)</option>
+                            <option value="gpt-4o-mini">GPT-4o Mini (Requires credits)</option>
+                            <option value="gpt-4-turbo-preview">GPT-4 Turbo Preview (Requires credits)</option>
+                        </select>
+                        <small style="color: var(--text-primary); opacity: 0.7; font-size: 0.8em; margin-top: 5px; display: block;">
+                            Try GPT-3.5 Turbo first if you're on the free trial. GPT-4 models require paid credits.
+                        </small>
+                    </div>
+                    <div class="player-input-group" style="margin-top: 15px;">
+                        <label for="category-inputs">Categories (one per line, 6 categories recommended):</label>
+                        <textarea id="category-inputs" rows="6" placeholder="Science&#10;History&#10;Geography&#10;Literature&#10;Movies&#10;Sports" class="category-textarea"></textarea>
+                    </div>
+                    <div class="player-input-group" style="margin-top: 15px;">
+                        <label for="questions-per-category">Questions per category:</label>
+                        <input type="number" id="questions-per-category" min="3" max="10" value="5" step="1" style="max-width: 150px;">
+                    </div>
+                    <button id="generate-questions-btn" class="btn editor-toggle" style="margin-top: 15px;">Generate Questions with AI</button>
+                    <div id="generate-status" class="import-status"></div>
+                    <div id="generate-loading" style="display: none; margin-top: 10px;">
+                        <div style="color: var(--accent-color);">Generating questions... This may take a moment.</div>
+                        <div class="loading-spinner" style="margin-top: 10px;"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Import Questions Section -->
+            <div class="setup-section">
+                <h3>Import Questions</h3>
+                <div class="import-controls">
+                    <label for="import-file-input" class="import-label">Select file to import (CSV or JSON):</label>
+                    <input type="file" id="import-file-input" accept=".csv,.json" style="display: none;">
+                    <button id="import-file-btn" class="btn editor-toggle">Choose File</button>
+                    <span id="import-file-name" class="import-file-name"></span>
+                    <button id="import-questions-btn" class="btn editor-toggle" style="display: none;">Import Questions</button>
+                </div>
+                <div id="import-status" class="import-status"></div>
+            </div>
+            
+            <!-- Question Editor Section -->
+            <div class="setup-section">
+                <h3>Edit Questions & Answers</h3>
+                <div class="editor-controls">
+                    <button id="toggle-editor-btn" class="btn editor-toggle">Show Editor</button>
+                </div>
+                <div id="question-editor" class="question-editor hidden">
+                    <div id="editor-categories"></div>
+                </div>
+            </div>
+            
+            <!-- Start Button -->
+            <button id="start-game-btn" class="btn start-btn">Start Game</button>
+        </div>
+    </div>
+
+    <!-- Main container for the entire game -->
+    <div class="container" id="game-container">
+        <!-- Header section with title and score -->
+        <header>
+            <div class="header-top">
+                <button id="stats-btn" class="settings-btn" title="View Statistics">📊</button>
+                <button id="settings-btn" class="settings-btn" title="Settings">⚙️</button>
+            </div>
+            <div class="score-board" id="score-board"></div>
+            <!-- Player selector buttons (hidden label) -->
+            <div class="current-player-section">
+                <div class="player-selector" id="player-selector-bar"></div>
+            </div>
+            <!-- Score Action Buttons -->
+            <div class="score-buttons">
+                <button id="correct-btn" class="score-btn correct">Correct</button>
+                <button id="incorrect-btn" class="score-btn incorrect">Incorrect</button>
+                <button id="no-answer-btn" class="score-btn no-answer" title="No one answered">🗑</button>
+            </div>
+        </header>
+
+        <!-- This is where the game board will be dynamically created -->
+        <div id="game-board" class="game-board">
+            <!-- The board will be generated by JavaScript -->
+        </div>
+        
+        <!-- Final Jeopardy Skip Button -->
+        <div class="final-jeopardy-skip-container">
+            <button id="skip-to-final-jeopardy-btn" class="btn final-jeopardy-skip-btn">Skip to Final Jeopardy</button>
+        </div>
+    </div>
+
+    <!-- Modal overlay - hidden by default, shown when a question is clicked -->
+    <div id="question-modal" class="modal">
+        <div class="modal-content">
+            <!-- This will show the category and point value -->
+            <div class="modal-header">
+                <span id="modal-category"></span>
+                <span id="modal-value"></span>
+            </div>
+            
+            <!-- Timer Display -->
+            <div class="timer-container">
+                <div class="timer-display">
+                    <span id="timer-text">Time: <span id="timer-seconds">15</span>s</span>
+                </div>
+                <div class="timer-bar-container">
+                    <div id="timer-bar" class="timer-bar"></div>
+                </div>
+            </div>
+            
+            <!-- This will show the clue/question -->
+            <div class="modal-body">
+                <p id="modal-clue"></p>
+            </div>
+            
+            <!-- This will show the answer when revealed -->
+            <div id="answer-section" class="modal-answer hidden">
+                <p><strong>Answer:</strong></p>
+                <p id="modal-answer"></p>
+                <div id="modal-explanation" class="modal-explanation"></div>
+            </div>
+            
+            <!-- Buttons to control the modal -->
+            <div class="modal-buttons">
+                <button id="reveal-answer-btn" class="btn reveal-btn">Reveal Answer</button>
+                <button id="close-modal-btn" class="btn close-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Daily Double Wager Modal -->
+    <div id="daily-double-modal" class="modal">
+        <div class="modal-content daily-double-content">
+            <div class="modal-header">
+                <h2>DAILY DOUBLE!</h2>
+            </div>
+            
+            <div class="daily-double-body">
+                <p class="daily-double-message">You've found a Daily Double!</p>
+                <p class="current-score-display">Current Score: <span id="dd-current-score">0</span></p>
+                <p class="max-wager-info">Maximum Wager: <span id="dd-max-wager">500</span></p>
+                
+                <div class="wager-input-group">
+                    <label for="daily-double-wager">Enter Your Wager:</label>
+                    <input type="number" id="daily-double-wager" min="0" value="0" step="100">
+                </div>
+            </div>
+            
+            <div class="modal-buttons">
+                <button id="dd-next-btn" class="btn reveal-btn">Next</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Final Jeopardy Intro Modal -->
+    <div id="final-jeopardy-intro-modal" class="modal">
+        <div class="modal-content final-jeopardy-intro-content">
+            <div class="final-jeopardy-intro-text">
+                <h1>FINAL</h1>
+                <h1>JEOPARDY!</h1>
+            </div>
+            <div class="modal-buttons">
+                <button id="final-jeopardy-continue-btn" class="btn reveal-btn">Continue</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Round 2 Transition Modal -->
+    <div id="round2-intro-modal" class="modal">
+        <div class="modal-content round2-intro-content">
+            <div class="round2-intro-text">
+                <h1>ROUND 2</h1>
+                <p>Double the points! All values are doubled.</p>
+                <p>Scores reset to zero for Round 2.</p>
+            </div>
+            <div class="modal-buttons">
+                <button id="round2-continue-btn" class="btn reveal-btn">Continue</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Final Scores Modal (Two Rounds Summary) -->
+    <div id="final-scores-modal" class="modal">
+        <div class="modal-content final-scores-content">
+            <div class="modal-header">
+                <h2>Game Complete!</h2>
+            </div>
+            <div id="final-scores-body" class="final-scores-body">
+                <!-- Populated by JavaScript -->
+            </div>
+            <div class="modal-buttons">
+                <button id="final-scores-close-btn" class="btn close-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Final Jeopardy Wager Modal -->
+    <div id="final-jeopardy-wager-modal" class="modal">
+        <div class="modal-content final-jeopardy-wager-content">
+            <div class="modal-header">
+                <h2>FINAL JEOPARDY!</h2>
+            </div>
+            
+            <div class="final-jeopardy-wager-body">
+                <p class="final-jeopardy-instructions">Each player, enter your wager. You can wager up to your current score, or 500 points if you have less than 500. Correct adds your wager to your score; incorrect subtracts your wager (same as a Daily Double).</p>
+                
+                <div class="final-jeopardy-wagers" id="final-jeopardy-wagers-container"></div>
+            </div>
+            
+            <div class="modal-buttons">
+                <button id="final-jeopardy-wager-next-btn" class="btn reveal-btn">Continue to Question</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Final Jeopardy Question Modal -->
+    <div id="final-jeopardy-question-modal" class="modal">
+        <div class="modal-content final-jeopardy-question-content">
+            <div class="modal-header">
+                <h2>FINAL JEOPARDY!</h2>
+            </div>
+            
+            <div class="final-jeopardy-category">
+                <p id="final-jeopardy-category-name"></p>
+            </div>
+            
+            <!-- Final Jeopardy Timer Display -->
+            <div class="timer-container">
+                <div class="timer-display">
+                    <span id="fj-timer-text">Time: <span id="fj-timer-seconds">30</span>s</span>
+                </div>
+                <div class="timer-bar-container">
+                    <div id="fj-timer-bar" class="timer-bar"></div>
+                </div>
+            </div>
+            
+            <div class="modal-body">
+                <p id="final-jeopardy-clue"></p>
+            </div>
+            
+            <div class="modal-buttons">
+                <button id="final-jeopardy-reveal-btn" class="btn reveal-btn">Reveal Answer</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Final Jeopardy Answer Modal -->
+    <div id="final-jeopardy-answer-modal" class="modal">
+        <div class="modal-content final-jeopardy-answer-content">
+            <div class="modal-header">
+                <h2>FINAL JEOPARDY!</h2>
+            </div>
+            
+            <div class="final-jeopardy-category">
+                <p id="final-jeopardy-answer-category-name"></p>
+            </div>
+            
+            <div class="modal-body">
+                <p id="final-jeopardy-answer-text"></p>
+                <div id="final-jeopardy-explanation" class="modal-explanation"></div>
+            </div>
+            
+            <div class="final-jeopardy-results">
+                <h3>Mark Answers:</h3>
+                <div class="final-jeopardy-player-results" id="final-jeopardy-results-container"></div>
+            </div>
+            
+            <div class="modal-buttons">
+                <button id="final-jeopardy-close-btn" class="btn close-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Help / Features & Instructions Modal -->
+    <div id="help-modal" class="modal">
+        <div class="modal-content help-modal-content">
+            <div class="modal-header">
+                <h2>Features &amp; Instructions</h2>
+                <button id="help-close-btn" class="close-settings-btn">×</button>
+            </div>
+            <div id="help-modal-body" class="help-modal-body">
+                <p class="help-intro">Quick guide to every feature. Scroll to read, or <strong>download the files below</strong> (same folder as this game). If a click opens the file in the browser instead of saving, use your browser’s “Save as” or run the game from a simple local web server.</p>
+                
+                <nav class="help-downloads" aria-label="Downloadable files">
+                    <span class="help-downloads-label">Download:</span>
+                    <a class="help-download-link" href="FEATURES_AND_INSTRUCTIONS.md" download="FEATURES_AND_INSTRUCTIONS.md" title="Full documentation (Markdown)">📄 Features &amp; instructions (.md)</a>
+                    <a class="help-download-link" href="IMPORT_TEMPLATE.md" download="IMPORT_TEMPLATE.md" title="Import format guide">📄 Import template guide (.md)</a>
+                    <a class="help-download-link" href="jeopardy_import_template_two_rounds.csv" download="jeopardy_import_template_two_rounds.csv" title="Two-round CSV example">📊 Two-rounds import (.csv)</a>
+                </nav>
+                <p id="help-download-hint" class="help-download-hint" role="status" aria-live="polite" hidden></p>
+                
+                <article class="help-section">
+                    <h3>1. Game setup</h3>
+                    <h4>Timer</h4>
+                    <p>Seconds per question (5–120). Default 30. Starts when a clue opens; stops when you click <strong>Reveal Answer</strong>.</p>
+                    <h4>Daily Doubles</h4>
+                    <p>Choose how many (0–10), placed randomly. <strong>Hide</strong> keeps them looking like normal values until picked. Player wagers (up to score or 500), then answers; right/wrong adds or subtracts the wager.</p>
+                    <h4>Two rounds</h4>
+                    <p>Loads the two-rounds template. Round 2 <strong>doubles</strong> displayed dollar values and <strong>resets scores to 0</strong>. After Round 1 Final Jeopardy you see <strong>ROUND 2</strong>. After Round 2, a table shows Round 1, Round 2, and total per team.</p>
+                    <h4>Players</h4>
+                    <p>Use <strong>Add player</strong> for up to eight teams (minimum two).</p>
+                    <h4>Import questions</h4>
+                    <p><strong>Choose file</strong> → <strong>Import</strong>. CSV columns: Category, Value, Clue, Answer, Explanation (optional). Two rounds: add column <strong>Round</strong> with <code>1</code> or <code>2</code>. JSON: <code>{"categories":[...]}</code> or <code>round1</code> / <code>round2</code> objects. See downloadable guides above.</p>
+                    <h4>Editor</h4>
+                    <p><strong>Show Editor</strong> to edit categories and clues. Changes last until import or restart.</p>
+                    <h4>Start game</h4>
+                    <p>Begins play with current options and questions.</p>
+                </article>
+                
+                <article class="help-section">
+                    <h3>2. During the game</h3>
+                    <h4>Board</h4>
+                    <p>Click a value to open a clue. Cleared cells are gray. Round 2 shows doubled dollar amounts.</p>
+                    <h4>Who’s answering</h4>
+                    <p>Select the player button before you mark <strong>Correct</strong> or <strong>Incorrect</strong>.</p>
+                    <h4>Scoring</h4>
+                    <p><strong>Correct / Incorrect</strong> — adjust the selected player’s score (or Daily Double wager). <strong>Trash</strong> — no one got it; no points; clue still clears.</p>
+                    <h4>Clue window</h4>
+                    <p><strong>Reveal Answer</strong> shows the response and stops the timer. <strong>Close</strong> exits without scoring.</p>
+                    <h4>Daily Double flow</h4>
+                    <p>Enter wager → <strong>Next</strong> → read clue → score as usual.</p>
+                    <h4>Skip to Final Jeopardy</h4>
+                    <p>Ends the board early and starts Final Jeopardy (not available after that round’s Final is finished).</p>
+                </article>
+                
+                <article class="help-section">
+                    <h3>3. Final Jeopardy</h3>
+                    <p>Intro → wagers → clue → <strong>Reveal Answer</strong> → mark each player correct or wrong → <strong>Close</strong>. Max wager is current score or 500. Correct adds your wager; incorrect subtracts it (same rule as Daily Double).</p>
+                </article>
+                
+                <article class="help-section">
+                    <h3>4. Settings &amp; stats</h3>
+                    <p><strong>⚙️</strong> — edit scores, names, timer; open statistics; <strong>Restart</strong> returns to setup. <strong>📊</strong> — overview, speed, by category, per team.</p>
+                </article>
+                
+                <article class="help-section help-section-summary">
+                    <h3>What you can do</h3>
+                    <p>Two to eight teams, custom names, built-in or imported questions, timer and Daily Double options, optional two-round game with combined final scores, in-game adjustments, and full play statistics.</p>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal">
+        <div class="modal-content settings-modal-content">
+            <div class="modal-header">
+                <h2>Game Settings</h2>
+                <button id="close-settings-btn" class="close-settings-btn">×</button>
+            </div>
+            
+            <div class="settings-body">
+                <div class="settings-section">
+                    <h3>Players (scores &amp; names)</h3>
+                    <div id="settings-players-container"></div>
+                </div>
+                
+                <!-- Timer Settings Section -->
+                <div class="settings-section">
+                    <h3>Timer Settings</h3>
+                    <div class="timer-input-group">
+                        <label for="settings-timer-duration">Question Timer (seconds):</label>
+                        <input type="number" id="settings-timer-duration" min="5" max="120" value="15" step="5">
+                    </div>
+                    <div class="timer-input-group" style="margin-top: 12px;">
+                        <label for="settings-final-timer-duration">Final Jeopardy Timer (seconds):</label>
+                        <input type="number" id="settings-final-timer-duration" min="5" max="300" value="30" step="5">
+                    </div>
+                </div>
+                
+                <div class="settings-section">
+                    <h3>Timer Music</h3>
+                    <div class="timer-input-group music-volume-row">
+                        <label for="settings-music-volume">Volume: <span id="settings-music-volume-value" class="volume-value-label">100%</span></label>
+                        <input type="range" id="settings-music-volume" class="music-volume-slider" min="0" max="100" value="100" step="1" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100">
+                    </div>
+                </div>
+                
+            </div>
+            
+            <!-- Settings Buttons -->
+            <div class="settings-buttons">
+                <button id="view-stats-btn" class="btn editor-toggle">View Statistics</button>
+                <button id="apply-settings-btn" class="btn apply-btn">Apply Changes</button>
+                <button id="restart-game-btn" class="btn restart-btn">Restart Game</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Statistics Modal -->
+    <div id="statistics-modal" class="modal">
+        <div class="modal-content settings-modal-content statistics-modal-content">
+            <div class="modal-header">
+                <h2>Game Statistics</h2>
+                <button id="close-stats-btn" class="close-settings-btn">×</button>
+            </div>
+            <div id="statistics-body" class="statistics-body">
+                <!-- Stats populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Link to our JavaScript file -->
+    <script src="script.js?v=20260509a"></script>
+</body>
+</html>
+
