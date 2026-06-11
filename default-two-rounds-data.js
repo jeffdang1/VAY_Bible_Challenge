@@ -1,0 +1,647 @@
+// Default two-round bilingual game data (from jeopardy_import_full_example_two_rounds)
+const twoRoundsTemplateData = {
+  "round1": {
+    "categories": [
+      {
+        "name": "Science",
+        "nameVi": "Khoa học",
+        "questions": [
+          {
+            "value": 100,
+            "clue": "The powerhouse of the cell.",
+            "answer": "What is the mitochondria?",
+            "explanation": "Mitochondria generate energy through cellular respiration.",
+            "clueVi": "Bào quan tạo năng lượng cho tế bào.",
+            "answerVi": "Thành phần ti thể là gì?",
+            "explanationVi": "Ti thể tạo năng lượng qua hô hấp tế bào."
+          },
+          {
+            "value": 200,
+            "clue": "The chemical symbol for water.",
+            "answer": "What is H2O?",
+            "explanation": "H2O is the chemical formula for water.",
+            "clueVi": "Ký hiệu hóa học của nước.",
+            "answerVi": "H2O là gì?",
+            "explanationVi": "Hai nguyên tử hydro và một nguyên tử oxy."
+          },
+          {
+            "value": 300,
+            "clue": "The planet closest to the sun.",
+            "answer": "What is Mercury?",
+            "explanation": "Mercury is the smallest and innermost planet.",
+            "clueVi": "Hành tinh gần Mặt Trời nhất.",
+            "answerVi": "Thủy tinh là gì?",
+            "explanationVi": "Hành tinh nhỏ nhất và gần Mặt Trời nhất."
+          },
+          {
+            "value": 400,
+            "clue": "The speed of light in a vacuum (approximate).",
+            "answer": "What is approximately 299792458 meters per second?",
+            "explanation": "The speed of light is a fundamental constant.",
+            "clueVi": "Tốc độ ánh sáng trong chân không (xấp xỉ).",
+            "answerVi": "Khoảng 299.792.458 mét/giây là gì?",
+            "explanationVi": "Hằng số cơ bản trong vật lý."
+          },
+          {
+            "value": 500,
+            "clue": "The process by which plants make food using sunlight.",
+            "answer": "What is photosynthesis?",
+            "explanation": "Photosynthesis converts light energy into chemical energy.",
+            "clueVi": "Quá trình thực vật tạo chất hữu cơ nhờ ánh sáng.",
+            "answerVi": "Quang hợp là gì?",
+            "explanationVi": "Chuyển năng lượng ánh sáng thành hóa năng lượng."
+          }
+        ]
+      },
+      {
+        "name": "History",
+        "nameVi": "Lịch sử",
+        "questions": [
+          {
+            "value": 100,
+            "clue": "The year World War II ended.",
+            "answer": "What is 1945?",
+            "explanation": "Japan surrendered in 1945.",
+            "clueVi": "Năm Thế chiến II kết thúc.",
+            "answerVi": "1945 là gì?",
+            "explanationVi": "Nhật Bản đầu hàng năm 1945."
+          },
+          {
+            "value": 200,
+            "clue": "The first President of the United States.",
+            "answer": "Who is George Washington?",
+            "explanation": "Washington served from 1789 to 1797.",
+            "clueVi": "Tổng thống đầu tiên của Hoa Kỳ.",
+            "answerVi": "George Washington là ai?",
+            "explanationVi": "Ông phục vụ từ 1789 đến 1797."
+          },
+          {
+            "value": 300,
+            "clue": "The ancient wonder located in Giza Egypt.",
+            "answer": "What are the Great Pyramids?",
+            "explanation": "The Pyramids of Giza are among the Seven Wonders.",
+            "clueVi": "Kỳ quan cổ đại ở Giza Ai Cập.",
+            "answerVi": "Kim tự tháp Giza là gì?",
+            "explanationVi": "Một trong Bảy kỳ quan thế giới cổ đại."
+          },
+          {
+            "value": 400,
+            "clue": "The wall that divided East and West Berlin.",
+            "answer": "What is the Berlin Wall?",
+            "explanation": "The Berlin Wall fell in 1989.",
+            "clueVi": "Bức tường chia Đông và Tây Berlin.",
+            "answerVi": "Bức tường Berlin là gì?",
+            "explanationVi": "Sụp đổ năm 1989."
+          },
+          {
+            "value": 500,
+            "clue": "The ship that sank in 1912 after hitting an iceberg.",
+            "answer": "What is the Titanic?",
+            "explanation": "The Titanic sank on its maiden voyage.",
+            "clueVi": "Con tàu chìm năm 1912 sau khi va tảng băng.",
+            "answerVi": "Titanic là gì?",
+            "explanationVi": "Chìm trong chuyến đầu tiên."
+          }
+        ]
+      },
+      {
+        "name": "Geography",
+        "nameVi": "Địa lý",
+        "questions": [
+          {
+            "value": 100,
+            "clue": "The largest ocean on Earth.",
+            "answer": "What is the Pacific Ocean?",
+            "explanation": "The Pacific covers about 63 million square miles.",
+            "clueVi": "Đại dương lớn nhất trên Trái Đất.",
+            "answerVi": "Thái Bình Dương là gì?",
+            "explanationVi": "Rộng khoảng 63 triệu dặm vuông."
+          },
+          {
+            "value": 200,
+            "clue": "The longest river in the world.",
+            "answer": "What is the Nile River?",
+            "explanation": "The Nile flows through northeastern Africa.",
+            "clueVi": "Con sông dài nhất thế giới.",
+            "answerVi": "Sông Nile là gì?",
+            "explanationVi": "Chảy qua Đông Bắc châu Phi."
+          },
+          {
+            "value": 300,
+            "clue": "The smallest country in the world.",
+            "answer": "What is Vatican City?",
+            "explanation": "Vatican City is an independent city-state.",
+            "clueVi": "Quốc gia nhỏ nhất thế giới.",
+            "answerVi": "Vatican là gì?",
+            "explanationVi": "Thành quốc độc lập."
+          },
+          {
+            "value": 400,
+            "clue": "The mountain range that separates Europe and Asia.",
+            "answer": "What are the Ural Mountains?",
+            "explanation": "The Urals run from north to south in Russia.",
+            "clueVi": "Dãy núi chia châu Âu và châu Á.",
+            "answerVi": "Dãy Ural là gì?",
+            "explanationVi": "Chạy dọc nước Nga."
+          },
+          {
+            "value": 500,
+            "clue": "The country known as the Land of the Rising Sun.",
+            "answer": "What is Japan?",
+            "explanation": "Japan is an island nation in East Asia.",
+            "clueVi": "Đất nước được gọi là xứ sở mặt trời mọc.",
+            "answerVi": "Nhật Bản là gì?",
+            "explanationVi": "Quốc đảo ở Đông Á."
+          }
+        ]
+      },
+      {
+        "name": "Literature",
+        "nameVi": "Văn học",
+        "questions": [
+          {
+            "value": 100,
+            "clue": "The author of Romeo and Juliet.",
+            "answer": "Who is William Shakespeare?",
+            "explanation": "Shakespeare wrote many famous plays.",
+            "clueVi": "Tác giả Romeo và Juliet.",
+            "answerVi": "William Shakespeare là ai?",
+            "explanationVi": "Ông viết nhiều vở kịch nổi tiếng."
+          },
+          {
+            "value": 200,
+            "clue": "The novel about a whale and Captain Ahab.",
+            "answer": "What is Moby Dick?",
+            "explanation": "Moby Dick was written by Herman Melville.",
+            "clueVi": "Tiểu thuyết về cá voi và thuyền trưởng Ahab.",
+            "answerVi": "Moby Dick là gì?",
+            "explanationVi": "Herman Melville là tác giả."
+          },
+          {
+            "value": 300,
+            "clue": "The author who wrote 1984 and Animal Farm.",
+            "answer": "Who is George Orwell?",
+            "explanation": "Orwell was a British novelist and essayist.",
+            "clueVi": "Tác giả 1984 và Trại súc vật.",
+            "answerVi": "George Orwell là ai?",
+            "explanationVi": "Nhà văn và nhà bình luận người Anh."
+          },
+          {
+            "value": 400,
+            "clue": "The epic poem about Odysseus's journey home.",
+            "answer": "What is The Odyssey?",
+            "explanation": "The Odyssey was written by Homer.",
+            "clueVi": "Sử thi về hành trình về nhà của Odysseus.",
+            "answerVi": "Odyssey là gì?",
+            "explanationVi": "Homer là tác giả."
+          },
+          {
+            "value": 500,
+            "clue": "The author of To Kill a Mockingbird.",
+            "answer": "Who is Harper Lee?",
+            "explanation": "Harper Lee published the novel in 1960.",
+            "clueVi": "Tác giả Giết con chim nhại.",
+            "answerVi": "Harper Lee là ai?",
+            "explanationVi": "Xuất bản tiểu thuyết năm 1960."
+          }
+        ]
+      },
+      {
+        "name": "Movies",
+        "nameVi": "Điện ảnh",
+        "questions": [
+          {
+            "value": 100,
+            "clue": "The wizard school attended by Harry Potter.",
+            "answer": "What is Hogwarts?",
+            "explanation": "Hogwarts is a fictional school of magic.",
+            "clueVi": "Trường phù thủy Harry Potter theo học.",
+            "answerVi": "Hogwarts là gì?",
+            "explanationVi": "Trường phép thuật hư cấu."
+          },
+          {
+            "value": 200,
+            "clue": "The planet where Luke Skywalker grew up.",
+            "answer": "What is Tatooine?",
+            "explanation": "Tatooine is a desert planet in Star Wars.",
+            "clueVi": "Hành tinh Luke Skywalker lớn lên.",
+            "answerVi": "Tatooine là gì?",
+            "explanationVi": "Hành tinh sa mạc trong Star Wars."
+          },
+          {
+            "value": 300,
+            "clue": "The year the first Toy Story movie was released.",
+            "answer": "What is 1995?",
+            "explanation": "Toy Story was the first feature-length CGI film.",
+            "clueVi": "Năm phim Toy Story đầu tiên ra mắt.",
+            "answerVi": "1995 là gì?",
+            "explanationVi": "Phim hoạt hình CGI dài đầu tiên."
+          },
+          {
+            "value": 400,
+            "clue": "The actor who played Tony Stark in the Marvel movies.",
+            "answer": "Who is Robert Downey Jr.?",
+            "explanation": "Downey Jr. played Iron Man in the MCU.",
+            "clueVi": "Diễn viên đóng Tony Stark trong Marvel.",
+            "answerVi": "Robert Downey Jr. là ai?",
+            "explanationVi": "Đóng Iron Man trong MCU."
+          },
+          {
+            "value": 500,
+            "clue": "The movie with the quote May the Force be with you.",
+            "answer": "What is Star Wars?",
+            "explanation": "Star Wars was created by George Lucas.",
+            "clueVi": "Phim có câu Chúc Thần Lực ở cùng anh.",
+            "answerVi": "Star Wars là gì?",
+            "explanationVi": "George Lucas là người sáng tạo."
+          }
+        ]
+      },
+      {
+        "name": "Sports",
+        "nameVi": "Thể thao",
+        "questions": [
+          {
+            "value": 100,
+            "clue": "The number of players on a basketball team on the court.",
+            "answer": "What is 5?",
+            "explanation": "Each team has 5 players on the court.",
+            "clueVi": "Số cầu thủ một đội bóng rổ trên sân.",
+            "answerVi": "5 là gì?",
+            "explanationVi": "Mỗi đội có 5 người trên sân."
+          },
+          {
+            "value": 200,
+            "clue": "The sport played at Wimbledon.",
+            "answer": "What is tennis?",
+            "explanation": "Wimbledon is a Grand Slam tennis tournament.",
+            "clueVi": "Môn thi đấu ở Wimbledon.",
+            "answerVi": "Quần vợt là gì?",
+            "explanationVi": "Giải Grand Slam danh tiếng."
+          },
+          {
+            "value": 300,
+            "clue": "The country that won the 2018 FIFA World Cup.",
+            "answer": "What is France?",
+            "explanation": "France defeated Croatia in the final.",
+            "clueVi": "Quốc gia vô địch World Cup 2018.",
+            "answerVi": "Pháp là gì?",
+            "explanationVi": "Thắng Croatia ở chung kết."
+          },
+          {
+            "value": 400,
+            "clue": "The number of bases in baseball.",
+            "answer": "What is 4?",
+            "explanation": "First second third and home plate.",
+            "clueVi": "Số gôn trong bóng chày.",
+            "answerVi": "4 là gì?",
+            "explanationVi": "Gôn 1, 2, 3 và home."
+          },
+          {
+            "value": 500,
+            "clue": "The Olympic event where athletes run 26.2 miles.",
+            "answer": "What is the marathon?",
+            "explanation": "The marathon distance is 26.2 miles.",
+            "clueVi": "Nội dung Olympic chạy 26,2 dặm.",
+            "answerVi": "Marathon là gì?",
+            "explanationVi": "Cự ly marathon là 26,2 dặm."
+          }
+        ]
+      }
+    ],
+    "finalJeopardy": {
+      "category": "Round 1 Final",
+      "categoryVi": "Final vòng 1",
+      "clue": "This gas makes up about 78% of Earth's atmosphere.",
+      "answer": "What is nitrogen?",
+      "explanation": "Round 1 Final Jeopardy — leave Value empty.",
+      "clueVi": "Khí này chiếm khoảng 78% khí quyển Trái Đất?",
+      "answerVi": "Nito là gì?",
+      "explanationVi": "Nitơ là khí dồi dào nhất trong khí quyển."
+    }
+  },
+  "round2": {
+    "categories": [
+      {
+        "name": "Advanced Science",
+        "nameVi": "Khoa học nâng cao",
+        "questions": [
+          {
+            "value": 100,
+            "clue": "The number of chromosomes in a human cell.",
+            "answer": "What is 46?",
+            "explanation": "Humans have 23 pairs of chromosomes.",
+            "clueVi": "Số nhiễm sắc thể trong tế bào người.",
+            "answerVi": "46 là gì?",
+            "explanationVi": "Người có 23 cặp nhiễm sắc thể."
+          },
+          {
+            "value": 200,
+            "clue": "The element with atomic number 6.",
+            "answer": "What is carbon?",
+            "explanation": "Carbon is the basis of organic chemistry.",
+            "clueVi": "Nguyên tố có số nguyên tử 6.",
+            "answerVi": "Carbon là gì?",
+            "explanationVi": "Nền tảng hóa học hữu cơ."
+          },
+          {
+            "value": 300,
+            "clue": "The process of cell division.",
+            "answer": "What is mitosis?",
+            "explanation": "Mitosis produces two identical daughter cells.",
+            "clueVi": "Quá trình phân chia tế bào.",
+            "answerVi": "Nguyên phân là gì?",
+            "explanationVi": "Tạo hai tế bào con giống hệt."
+          },
+          {
+            "value": 400,
+            "clue": "The theory that describes the expansion of the universe.",
+            "answer": "What is the Big Bang theory?",
+            "explanation": "The universe began expanding about 13.8 billion years ago.",
+            "clueVi": "Thuyết mô tả sự giãn nở vũ trụ.",
+            "answerVi": "Thuyết Big Bang là gì?",
+            "explanationVi": "Vũ trụ giãn nở từ khoảng 13,8 tỷ năm trước."
+          },
+          {
+            "value": 500,
+            "clue": "The particle that mediates the electromagnetic force.",
+            "answer": "What is the photon?",
+            "explanation": "Photons are massless particles of light.",
+            "clueVi": "Hạt truyền lực điện từ.",
+            "answerVi": "Photon là gì?",
+            "explanationVi": "Hạt ánh sáng không khối lượng."
+          }
+        ]
+      },
+      {
+        "name": "World History",
+        "nameVi": "Lịch sử thế giới",
+        "questions": [
+          {
+            "value": 100,
+            "clue": "The year the Magna Carta was signed.",
+            "answer": "What is 1215?",
+            "explanation": "King John signed it in England.",
+            "clueVi": "Năm Magna Carta được ký.",
+            "answerVi": "1215 là gì?",
+            "explanationVi": "Vua John ký tại Anh."
+          },
+          {
+            "value": 200,
+            "clue": "The empire that built the Colosseum.",
+            "answer": "What is the Roman Empire?",
+            "explanation": "The Colosseum was completed in 80 AD.",
+            "clueVi": "Đế chế xây Đấu trường La Mã.",
+            "answerVi": "Đế quốc La Mã là gì?",
+            "explanationVi": "Hoàn thành khoảng năm 80 sau Công nguyên."
+          },
+          {
+            "value": 300,
+            "clue": "The explorer who reached India by sea in 1498.",
+            "answer": "Who is Vasco da Gama?",
+            "explanation": "Da Gama sailed around the Cape of Good Hope.",
+            "clueVi": "Nhà thám hiểm đến Ấn Độ bằng đường biển 1498.",
+            "answerVi": "Vasco da Gama là ai?",
+            "explanationVi": "Đi vòng mũi Hảo Vọng."
+          },
+          {
+            "value": 400,
+            "clue": "The treaty that ended World War I.",
+            "answer": "What is the Treaty of Versailles?",
+            "explanation": "Signed in 1919 in France.",
+            "clueVi": "Hiệp ước kết thúc Thế chiến I.",
+            "answerVi": "Hiệp ước Versailles là gì?",
+            "explanationVi": "Ký năm 1919 tại Pháp."
+          },
+          {
+            "value": 500,
+            "clue": "The dynasty that ruled China for over 400 years.",
+            "answer": "What is the Ming Dynasty?",
+            "explanation": "The Ming ruled from 1368 to 1644.",
+            "clueVi": "Triều đại cai trị Trung Quốc hơn 400 năm.",
+            "answerVi": "Nhà Minh là gì?",
+            "explanationVi": "Trị vì từ 1368 đến 1644."
+          }
+        ]
+      },
+      {
+        "name": "World Geography",
+        "nameVi": "Địa lý thế giới",
+        "questions": [
+          {
+            "value": 100,
+            "clue": "The capital of Australia.",
+            "answer": "What is Canberra?",
+            "explanation": "Canberra is inland; Sydney is the largest city.",
+            "clueVi": "Thủ đô Australia.",
+            "answerVi": "Canberra là gì?",
+            "explanationVi": "Ở nội địa; Sydney là thành phố lớn nhất."
+          },
+          {
+            "value": 200,
+            "clue": "The country with the most borders.",
+            "answer": "What is China?",
+            "explanation": "China shares borders with 14 countries.",
+            "clueVi": "Quốc gia có nhiều biên giới nhất.",
+            "answerVi": "Trung Quốc là gì?",
+            "explanationVi": "Giáp 14 quốc gia."
+          },
+          {
+            "value": 300,
+            "clue": "The river that flows through Paris.",
+            "answer": "What is the Seine?",
+            "explanation": "The Seine flows through northern France.",
+            "clueVi": "Con sông chảy qua Paris.",
+            "answerVi": "Sông Seine là gì?",
+            "explanationVi": "Chảy qua miền bắc Pháp."
+          },
+          {
+            "value": 400,
+            "clue": "The strait that separates Africa from Europe.",
+            "answer": "What is the Strait of Gibraltar?",
+            "explanation": "It connects the Atlantic to the Mediterranean.",
+            "clueVi": "Eo biển chia châu Phi và châu Âu.",
+            "answerVi": "Eo biển Gibraltar là gì?",
+            "explanationVi": "Nối Đại Tây Dương với Địa Trung Hải."
+          },
+          {
+            "value": 500,
+            "clue": "The highest mountain in Africa.",
+            "answer": "What is Mount Kilimanjaro?",
+            "explanation": "Kilimanjaro is in Tanzania.",
+            "clueVi": "Ngọn núi cao nhất châu Phi.",
+            "answerVi": "Núi Kilimanjaro là gì?",
+            "explanationVi": "Ở Tanzania."
+          }
+        ]
+      },
+      {
+        "name": "Classic Literature",
+        "nameVi": "Văn học cổ điển",
+        "questions": [
+          {
+            "value": 100,
+            "clue": "The island where Robinson Crusoe was stranded.",
+            "answer": "What is a Caribbean island?",
+            "explanation": "Often identified as Tobago or similar.",
+            "clueVi": "Hòn đảo Robinson Crusoe bị mắc kẹt.",
+            "answerVi": "Một đảo Caribe là gì?",
+            "explanationVi": "Thường được nhận diện là Tobago."
+          },
+          {
+            "value": 200,
+            "clue": "The author of Pride and Prejudice.",
+            "answer": "Who is Jane Austen?",
+            "explanation": "Austen published the novel in 1813.",
+            "clueVi": "Tác giả Kiêu hãnh và Định kiến.",
+            "answerVi": "Jane Austen là ai?",
+            "explanationVi": "Xuất bản tiểu thuyết năm 1813."
+          },
+          {
+            "value": 300,
+            "clue": "The narrator of The Great Gatsby.",
+            "answer": "Who is Nick Carraway?",
+            "explanation": "Nick is Gatsby's neighbor and friend.",
+            "clueVi": "Người kể chuyện Gatsby vĩ đại.",
+            "answerVi": "Nick Carraway là ai?",
+            "explanationVi": "Hàng xóm và bạn của Gatsby."
+          },
+          {
+            "value": 400,
+            "clue": "The novel that begins with It was the best of times.",
+            "answer": "What is A Tale of Two Cities?",
+            "explanation": "Written by Charles Dickens.",
+            "clueVi": "Tiểu thuyết mở đầu Đó là thời điểm tốt nhất.",
+            "answerVi": "Truyện Hai thành phố là gì?",
+            "explanationVi": "Charles Dickens là tác giả."
+          },
+          {
+            "value": 500,
+            "clue": "The author of Crime and Punishment.",
+            "answer": "Who is Fyodor Dostoevsky?",
+            "explanation": "Dostoevsky was a Russian novelist.",
+            "clueVi": "Tác giả Tội ác và Hình phạt.",
+            "answerVi": "Fyodor Dostoevsky là ai?",
+            "explanationVi": "Nhà văn Nga."
+          }
+        ]
+      },
+      {
+        "name": "Documentaries",
+        "nameVi": "Phim tài liệu",
+        "questions": [
+          {
+            "value": 100,
+            "clue": "The year the first feature-length documentary was released.",
+            "answer": "What is 1922?",
+            "explanation": "Nanook of the North is often cited.",
+            "clueVi": "Năm phim tài liệu dài đầu tiên ra mắt.",
+            "answerVi": "1922 là gì?",
+            "explanationVi": "Nanook of the North thường được nhắc đến."
+          },
+          {
+            "value": 200,
+            "clue": "The documentary about March of the Penguins.",
+            "answer": "What is March of the Penguins?",
+            "explanation": "French production La Marche de l'empereur.",
+            "clueVi": "Phim tài liệu về cuộc hành trình của chim cánh cụt.",
+            "answerVi": "March of the Penguins là gì?",
+            "explanationVi": "Bản Pháp La Marche de l'empereur."
+          },
+          {
+            "value": 300,
+            "clue": "The filmmaker behind Planet Earth.",
+            "answer": "Who is David Attenborough?",
+            "explanation": "Attenborough narrated the BBC series.",
+            "clueVi": "Nhà làm phim đằng sau Planet Earth.",
+            "answerVi": "David Attenborough là ai?",
+            "explanationVi": "Người dẫn chuyện loạt phim BBC."
+          },
+          {
+            "value": 400,
+            "clue": "The documentary about climate change by Al Gore.",
+            "answer": "What is An Inconvenient Truth?",
+            "explanation": "Released in 2006.",
+            "clueVi": "Phim tài liệu biến đổi khí hậu của Al Gore.",
+            "answerVi": "An Inconvenient Truth là gì?",
+            "explanationVi": "Ra mắt năm 2006."
+          },
+          {
+            "value": 500,
+            "clue": "The documentary that exposed conditions in meatpacking.",
+            "answer": "What is The Jungle?",
+            "explanation": "Upton Sinclair's 1906 novel inspired reforms.",
+            "clueVi": "Tác phẩm phơi bày điều kiện giết mổ thịt.",
+            "answerVi": "The Jungle là gì?",
+            "explanationVi": "Tiểu thuyết 1906 của Upton Sinclair."
+          }
+        ]
+      },
+      {
+        "name": "Olympic Sports",
+        "nameVi": "Thể thao Olympic",
+        "questions": [
+          {
+            "value": 100,
+            "clue": "The number of rings on the Olympic flag.",
+            "answer": "What is 5?",
+            "explanation": "The rings represent the five continents.",
+            "clueVi": "Số vòng trên lá cờ Olympic.",
+            "answerVi": "5 là gì?",
+            "explanationVi": "Đại diện năm châu lục."
+          },
+          {
+            "value": 200,
+            "clue": "The sport in which Usain Bolt competed.",
+            "answer": "What is track and field or sprinting?",
+            "explanation": "Bolt specialized in 100m and 200m.",
+            "clueVi": "Môn Usain Bolt thi đấu.",
+            "answerVi": "Điền kinh / chạy nước rút là gì?",
+            "explanationVi": "Chuyên 100m và 200m."
+          },
+          {
+            "value": 300,
+            "clue": "The country that hosted the 2016 Summer Olympics.",
+            "answer": "What is Brazil?",
+            "explanation": "Rio de Janeiro hosted the games.",
+            "clueVi": "Nước đăng cai Olympic mùa hè 2016.",
+            "answerVi": "Brazil là gì?",
+            "explanationVi": "Rio de Janeiro là nơi tổ chức."
+          },
+          {
+            "value": 400,
+            "clue": "The swimming stroke that mimics a frog.",
+            "answer": "What is the breaststroke?",
+            "explanation": "The breaststroke is one of four competitive strokes.",
+            "clueVi": "Kiểu bơi bắt chước con ếch.",
+            "answerVi": "Bơi ếch là gì?",
+            "explanationVi": "Một trong bốn kiểu bơi thi đấu."
+          },
+          {
+            "value": 500,
+            "clue": "The event combining running swimming and cycling.",
+            "answer": "What is the triathlon?",
+            "explanation": "The triathlon became Olympic in 2000.",
+            "clueVi": "Môn kết hợp chạy bơi và đạp xe.",
+            "answerVi": "Ba môn phối hợp là gì?",
+            "explanationVi": "Trở thành môn Olympic năm 2000."
+          }
+        ]
+      }
+    ],
+    "finalJeopardy": {
+      "category": "Round 2 Final",
+      "categoryVi": "Final vòng 2",
+      "clue": "This planet is known as the Red Planet.",
+      "answer": "What is Mars?",
+      "explanation": "Round 2 Final Jeopardy — enable Two Rounds in setup.",
+      "clueVi": "Hành tinh này được gọi là Hành tinh Đỏ?",
+      "answerVi": "Hỏa tinh là gì?",
+      "explanationVi": "Hỏa tinh là hành tinh thứ tư tính từ Mặt Trời."
+    }
+  }
+};
+
+const questionsData = {
+  categories: twoRoundsTemplateData.round1.categories
+};

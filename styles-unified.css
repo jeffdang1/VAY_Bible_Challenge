@@ -1,0 +1,450 @@
+/* ============================================
+   UNIFIED DESIGN SYSTEM (full-app clean style)
+   Loaded as extension — merged into styles.css
+   ============================================ */
+
+h1, h2, h3, h4, h5, p, label, span, li, td, th, a, small, code {
+    text-shadow: none !important;
+}
+
+.help-btn {
+    width: 42px !important;
+    height: 42px !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+}
+
+.help-btn.icon-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px !important;
+    font-size: inherit;
+}
+
+.setup-section small,
+.buzzer-setup-hint,
+.editor-fj-hint,
+.import-file-name,
+.help-sheets-note {
+    color: var(--ui-text-dim) !important;
+    opacity: 1 !important;
+    line-height: 1.5;
+}
+.setup-sheets-link,
+.timer-input-group a,
+.help-modal-body a:not(.help-download-link) {
+    color: var(--ui-accent-2);
+    font-weight: 600;
+    text-decoration: none;
+}
+.setup-sheets-link:hover,
+.timer-input-group a:hover {
+    text-decoration: underline;
+}
+.setup-section {
+    padding: 16px 18px;
+    border-radius: var(--ui-radius-sm);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.import-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+.import-label {
+    flex: 1 1 100%;
+    color: var(--ui-text-dim);
+    font-weight: 600;
+    font-size: 0.92rem;
+}
+.import-file-name {
+    font-style: normal;
+    color: var(--ui-text-dim);
+    font-size: 0.88rem;
+}
+.loading-spinner {
+    border-radius: 50% !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    border-top-color: var(--ui-accent) !important;
+}
+
+.player-setup-item,
+.question-editor,
+.editor-category,
+.editor-final-jeopardy-block,
+.editor-question-item {
+    border-radius: var(--ui-radius-sm) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+}
+.editor-fj-title,
+.editor-question-item label {
+    color: var(--ui-text) !important;
+    font-weight: 650;
+}
+.editor-final-jeopardy-intro {
+    border-top: 1px solid rgba(255, 255, 255, 0.14) !important;
+}
+.editor-toggle {
+    font-weight: 650;
+}
+
+.start-btn {
+    display: block;
+    width: 100%;
+    max-width: 420px;
+    margin: 10px auto 0;
+    padding: 14px 28px !important;
+    font-size: 1.05rem !important;
+    font-weight: 750 !important;
+    letter-spacing: 0.04em;
+}
+
+.start-screen-content {
+    max-width: 920px;
+}
+
+.player-input-group label,
+.timer-input-group label {
+    font-size: 0.92rem;
+    letter-spacing: 0.02em;
+}
+
+header {
+    padding: 8px 4px 4px;
+}
+.header-top {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    min-height: 42px;
+}
+.header-top-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+#game-container .header-top .help-btn,
+#game-container .header-top .settings-btn {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+}
+.start-help-btn {
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    z-index: 3000;
+}
+body.game-active .start-help-btn {
+    display: none !important;
+}
+#game-container header {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--ui-radius);
+    padding: 10px 12px 8px;
+    box-shadow: var(--ui-shadow-soft);
+}
+.player-score.buzzed-in,
+.player-btn.buzzed-in {
+    border-color: rgba(106, 167, 255, 0.65) !important;
+    box-shadow: 0 0 0 2px rgba(106, 167, 255, 0.22), var(--ui-shadow-soft) !important;
+}
+
+@keyframes uiModalBackdropIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes uiModalContentIn {
+    from { opacity: 0; transform: translateY(12px) scale(0.985); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.modal.show {
+    animation: uiModalBackdropIn 0.26s ease forwards !important;
+    transform: none !important;
+    opacity: 1 !important;
+}
+.modal.show .modal-content {
+    animation: uiModalContentIn 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards !important;
+    transform: none !important;
+    opacity: 1 !important;
+}
+.modal-content {
+    transform: none !important;
+    opacity: 1 !important;
+}
+#question-modal .modal-content {
+    width: min(980px, 96vw) !important;
+    height: auto !important;
+    max-height: 92vh !important;
+}
+.settings-modal-content,
+.statistics-modal-content,
+.help-modal-content,
+.daily-double-content,
+.final-scores-content,
+.final-jeopardy-wager-content,
+.final-jeopardy-question-content,
+.final-jeopardy-answer-content {
+    width: min(760px, 94vw) !important;
+    max-height: 92vh !important;
+    height: auto !important;
+}
+.help-modal-content {
+    width: min(860px, 96vw) !important;
+}
+.final-jeopardy-intro-content,
+.round2-intro-content {
+    width: min(680px, 92vw) !important;
+    height: auto !important;
+    min-height: 320px;
+    max-height: 88vh !important;
+    justify-content: center;
+    padding: clamp(28px, 5vw, 48px) !important;
+}
+.final-jeopardy-intro-text h1,
+.round2-intro-text h1 {
+    font-family: 'Gyparody', ui-sans-serif, system-ui, sans-serif !important;
+    font-size: clamp(2.8rem, 9vw, 4.5rem) !important;
+    color: var(--ui-accent) !important;
+    letter-spacing: 0.08em !important;
+    margin: 12px 0 !important;
+    animation: none !important;
+    transform: none !important;
+}
+.round2-intro-text p {
+    color: var(--ui-text-dim);
+    font-size: 1.05rem;
+    line-height: 1.55;
+    max-width: 36rem;
+}
+
+.close-settings-btn {
+    border-radius: 10px !important;
+    background: rgba(255, 255, 255, 0.06) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-size: 1.5rem !important;
+    line-height: 1;
+    transform: none !important;
+}
+.close-settings-btn:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: var(--ui-accent) !important;
+    transform: none !important;
+}
+.settings-section,
+.stats-section {
+    border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+}
+.settings-section h3,
+.stats-section h3,
+.stats-team-block h4 {
+    color: var(--ui-text) !important;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+.stats-list li,
+.stats-empty {
+    color: var(--ui-text-dim) !important;
+}
+.stats-list li strong {
+    color: var(--ui-accent) !important;
+}
+.modal-buttons,
+.settings-buttons {
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.daily-double-content .modal-header h2,
+.daily-double-message,
+.current-score-display,
+.max-wager-info,
+.wager-input-group label,
+.final-jeopardy-instructions,
+.final-jeopardy-wager-item label,
+.final-jeopardy-category p,
+.final-jeopardy-results h3,
+.final-result-item span:first-child {
+    text-shadow: none !important;
+}
+.daily-double-content .modal-header h2 {
+    font-size: clamp(1.6rem, 4vw, 2rem) !important;
+    color: var(--ui-accent) !important;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+}
+.daily-double-message,
+.final-jeopardy-instructions {
+    color: var(--ui-text) !important;
+    font-weight: 650;
+}
+.current-score-display span,
+.max-wager-info span {
+    color: var(--ui-accent) !important;
+    font-size: 1.15em !important;
+}
+.final-jeopardy-category,
+.final-jeopardy-results,
+.final-result-item,
+.final-scores-table th,
+.final-scores-table td {
+    border-radius: var(--ui-radius-sm) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+}
+.final-scores-table th {
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: var(--ui-text) !important;
+    font-weight: 700;
+}
+.final-scores-table td {
+    color: var(--ui-text-dim) !important;
+}
+.final-scores-table td:last-child {
+    color: var(--ui-accent) !important;
+    font-weight: 700;
+}
+.final-scores-summary h2 {
+    color: var(--ui-text) !important;
+}
+
+.help-modal-content {
+    background: rgba(10, 14, 30, 0.96) !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    border-radius: var(--ui-radius) !important;
+    box-shadow: var(--ui-shadow) !important;
+}
+.help-modal-content .modal-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+.help-modal-content .modal-header h2 {
+    color: var(--ui-text) !important;
+    font-size: 1.45rem !important;
+    font-weight: 750;
+}
+.help-downloads {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: var(--ui-radius-sm) !important;
+}
+.help-downloads-label {
+    color: var(--ui-text-dim) !important;
+}
+.help-download-link {
+    border-radius: 10px !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: var(--ui-text) !important;
+    font-weight: 650;
+    padding: 9px 14px !important;
+}
+.help-download-link-primary {
+    background: linear-gradient(180deg, rgba(46, 229, 157, 0.22), rgba(46, 229, 157, 0.12)) !important;
+    border-color: rgba(46, 229, 157, 0.35) !important;
+    color: #dffef0 !important;
+}
+.help-download-link:hover,
+.help-download-link:focus {
+    transform: none !important;
+    filter: brightness(1.08);
+    box-shadow: none !important;
+}
+.help-section {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border-left: 3px solid rgba(106, 167, 255, 0.55) !important;
+    border-radius: var(--ui-radius-sm) !important;
+}
+.help-section-summary {
+    border-left-color: rgba(255, 213, 74, 0.55) !important;
+    background: rgba(255, 213, 74, 0.06) !important;
+}
+.help-modal-body h3 {
+    color: var(--ui-text) !important;
+    border-bottom-color: rgba(255, 255, 255, 0.12) !important;
+}
+.help-modal-body h4 {
+    color: var(--ui-text-dim) !important;
+}
+.help-modal-body p,
+.help-modal-body .help-intro {
+    color: var(--ui-text-dim) !important;
+}
+.help-download-hint {
+    border-radius: var(--ui-radius-sm) !important;
+    background: rgba(255, 213, 74, 0.1) !important;
+    border: 1px solid rgba(255, 213, 74, 0.28) !important;
+    color: #ffe8a8 !important;
+}
+
+.buzzer-key-display {
+    border-radius: var(--ui-radius-sm) !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    background: rgba(255, 255, 255, 0.06) !important;
+    color: var(--ui-accent) !important;
+    font-family: ui-monospace, Consolas, monospace !important;
+    text-shadow: none !important;
+}
+.buzzer-timer-container {
+    border-color: rgba(106, 167, 255, 0.35) !important;
+    background: rgba(106, 167, 255, 0.08) !important;
+}
+.buzzer-status-text {
+    color: var(--ui-accent-2);
+    font-weight: 650;
+}
+input[type="checkbox"] {
+    accent-color: var(--ui-accent-2);
+    width: 1rem;
+    height: 1rem;
+}
+.music-volume-slider {
+    accent-color: var(--ui-accent-2);
+}
+
+.statistics-body,
+.settings-body,
+.help-modal-body,
+.question-editor {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.22) transparent;
+}
+.statistics-body::-webkit-scrollbar,
+.settings-body::-webkit-scrollbar,
+.help-modal-body::-webkit-scrollbar,
+.question-editor::-webkit-scrollbar {
+    width: 8px;
+}
+.statistics-body::-webkit-scrollbar-thumb,
+.settings-body::-webkit-scrollbar-thumb,
+.help-modal-body::-webkit-scrollbar-thumb,
+.question-editor::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.22);
+    border-radius: 999px;
+}
+
+@media (max-width: 768px) {
+    .help-btn.icon-btn,
+    .icon-btn.settings-btn {
+        width: 38px;
+        height: 38px;
+    }
+    .setup-section {
+        padding: 14px;
+    }
+    #question-modal .modal-content,
+    .settings-modal-content,
+    .statistics-modal-content,
+    .help-modal-content {
+        width: 100% !important;
+        max-height: 94vh !important;
+        border-radius: var(--ui-radius-sm) !important;
+    }
+}
